@@ -1,5 +1,7 @@
 import bot from './assets/bot.svg';
 import user from './assets/user.svg';
+import { marked } from 'marked';
+
 
 const form = document.querySelector('form')
 const container = document.querySelector('#chat_container')
@@ -16,16 +18,20 @@ function loader(element) {
   }, 300)
 }
 
-function typingText(element, text) {
-  let index = 0
-
-  let interval = setInterval(() => {
-    element.textContent += text.charAt(index)
-    index++
-    if (index >= text.length) {
-      clearInterval(interval)
+function typingText(element, sentence) {
+  let index = 0;
+  
+  let timer = setInterval(function() {
+    const char = sentence[index];
+    
+    if (char === '<') {
+      index = sentence.indexOf('>', index);  // skip to greater-than
     }
-  }, 20)
+    element.innerHTML = sentence.slice(0, index);
+    if (++index === sentence.length) {
+      clearInterval(timer);
+    }
+  }, 20);
 }
 
 function generateID() {
@@ -75,13 +81,18 @@ const handleSubmit = async (e) => {
     }),
   })
   clearInterval(loadInterval)
+  messageDiv.innerHTML = ''
   messageDiv.textContent = ''
 
   if (response.ok) {
     const data = await response.json()
     const trimedData = data.bot.trim()
-    console.log(trimedData)
-    typingText(messageDiv, trimedData)
+
+    const htmlData = marked.parse(trimedData)
+    const addedHTML = `${htmlData}`
+    //const escapedString = addedHTML.replace(/<|>/g, '\\$&'); // Escape both '<' and '>'
+    typingText(messageDiv, addedHTML)
+    //messageDiv.innerHTML = addedHTML
   }
   else {
     const text = await response.text()
