@@ -1,7 +1,9 @@
 I am building a GPT-Clone using Google Generative-AI (Gemini-Pro Model).
 
-### Tech Stack
-- JavaScript (Node/Vite)
+⚡ Tech Stack
+![JavaScript](https://img.shields.io/badge/JavaScript-61DAFB.svg?style=for-the-badge&logo=JavaScript&logoColor=black)&nbsp; 
+![Vite](https://img.shields.io/badge/Vite-61DAFB.svg?style=for-the-badge&logo=Vite&logoColor=black)&nbsp;
+![Node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
 ### Libraries
 - Vite (Build dependency)
