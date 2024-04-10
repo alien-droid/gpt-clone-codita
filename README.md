@@ -20,4 +20,5 @@ You can set up your environment using API Keys and store it in a '.env' file. ([
 Referred from: https://www.youtube.com/watch?v=2FeymQoKvrk&t
 
 
+![image](https://github.com/alien-droid/gpt-clone-codita/assets/77412085/d9b1e782-1859-483e-af88-9ed273db60f9)
 
